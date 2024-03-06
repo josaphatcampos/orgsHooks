@@ -1,16 +1,26 @@
-import React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import React, {useState} from 'react';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import Rate from '../../../components/Rate.tsx';
 
 // @ts-ignore
 export default function CardProducers({name, image, distance, rate}) {
+  const [selected, setSelected] = useState(false);
+
   return (
-    <View style={styles.card}>
+    <TouchableOpacity
+      style={styles.card}
+      onPress={() => {
+        setSelected(!selected);
+      }}>
       <Image style={styles.img} source={image} accessibilityLabel={name} />
       <View style={styles.info}>
-        <Text style={styles.name}>{name}</Text>
+        <View>
+          <Text style={styles.name}>{name}</Text>
+          <Rate rate={rate} isEdit={selected} isBig={selected} />
+        </View>
         <Text style={styles.distance}>{distance}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 

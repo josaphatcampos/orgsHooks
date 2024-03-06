@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {FlatList, StyleSheet, Text} from 'react-native';
-import {requestProducers} from '../../services/requestDataService.ts';
+import {requestProducers} from '../../../services/requestDataService.ts';
 import CardProducers from './CardProducers.tsx';
 
+// @ts-ignore
 export default function Producers({header: Header}) {
   const [producers, setProducers] = useState('');
   const [prodList, setProdList] = useState([]);
@@ -10,6 +11,7 @@ export default function Producers({header: Header}) {
   useEffect(() => {
     const producers = requestProducers();
     setProducers(producers.title);
+    // @ts-ignore
     setProdList(producers.list);
   }, []);
 

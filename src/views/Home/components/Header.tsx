@@ -2,8 +2,8 @@ import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 
 // @ts-ignore
-import logo from '../../../assets/logo.png';
-import {requestHeader} from '../../services/requestDataService.ts';
+import logo from '../../../../assets/logo.png';
+import {requestHeader} from '../../../services/requestDataService.ts';
 
 class Header extends React.Component {
   state = {
