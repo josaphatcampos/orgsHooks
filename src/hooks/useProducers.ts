@@ -7,6 +7,9 @@ export default function useProducers() {
 
   useEffect(() => {
     const producers = requestProducers();
+
+    producers.list.sort((prod1, prod2) => prod1.distance - prod2.distance);
+
     setTitle(producers.title);
     // @ts-ignore
     setList(producers.list);
