@@ -15,7 +15,6 @@ export default function StarComponent({
 }) {
   const styles = stylesFunc(isBig);
   const getImage = () => {
-    console.log('fill:' + fillImage);
     if (fillImage) {
       return starImage;
     } else {

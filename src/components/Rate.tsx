@@ -10,8 +10,6 @@ export default function Rate({rate: oldRate, isEdit = false, isBig = false}) {
     const listStar = [];
 
     for (let i = 0; i < 5; i++) {
-      console.log(quantity);
-      console.log(i < quantity);
       listStar.push(
         // @ts-ignore
         <StarComponent

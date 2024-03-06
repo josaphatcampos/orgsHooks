@@ -1,24 +1,26 @@
-import React, {useState} from 'react';
+import React, {useMemo, useReducer} from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Rate from '../../../components/Rate.tsx';
 
+const distanceMeter = (distance: number) => {
+  return `${distance}m`;
+};
+
 // @ts-ignore
 export default function CardProducers({name, image, distance, rate}) {
-  const [selected, setSelected] = useState(false);
+  const [selected, inverseSelect] = useReducer(selected => !selected, false);
+
+  const distanceString = useMemo(() => distanceMeter(distance), [distance]);
 
   return (
-    <TouchableOpacity
-      style={styles.card}
-      onPress={() => {
-        setSelected(!selected);
-      }}>
+    <TouchableOpacity style={styles.card} onPress={inverseSelect}>
       <Image style={styles.img} source={image} accessibilityLabel={name} />
       <View style={styles.info}>
         <View>
           <Text style={styles.name}>{name}</Text>
           <Rate rate={rate} isEdit={selected} isBig={selected} />
         </View>
-        <Text style={styles.distance}>{distance}</Text>
+        <Text style={styles.distance}>{distanceString}</Text>
       </View>
     </TouchableOpacity>
   );
